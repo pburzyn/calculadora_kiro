@@ -1,0 +1,93 @@
+.display {
+  background-color: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace;
+}
+
+.indicators {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 22px;
+}
+
+.angleMode {
+  background: #2a2a4a;
+  color: #7ec8e3;
+  border: 1px solid #7ec8e3;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+}
+
+.angleMode:hover {
+  background: #3a3a6a;
+}
+
+.memoryIndicator {
+  color: #f0c040;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 1px 6px;
+  border: 1px solid #f0c040;
+  border-radius: 4px;
+}
+
+.expressionRow {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 24px;
+}
+
+.expression {
+  color: #aaa;
+  font-size: 1rem;
+  text-align: right;
+  word-break: break-all;
+}
+
+.resultRow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+}
+
+.result {
+  color: #e8e8e8;
+  font-size: 1.6rem;
+  text-align: right;
+  font-weight: 300;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.toggleButton {
+  background: #2a2a4a;
+  color: #7ec8e3;
+  border: 1px solid #7ec8e3;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.toggleButton:hover {
+  background: #3a3a6a;
+}
