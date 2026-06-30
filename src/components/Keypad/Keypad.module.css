@@ -1,0 +1,84 @@
+.keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.btn {
+  background-color: #2a2a3e;
+  color: #e8e8e8;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: background-color 0.1s, transform 0.05s;
+  min-height: 42px;
+}
+
+.btn:hover {
+  background-color: #3a3a5e;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.operator {
+  background-color: #1e3a5f;
+  color: #7ec8e3;
+  border-color: #2e5a8f;
+}
+
+.operator:hover {
+  background-color: #2e4a7f;
+}
+
+.equals {
+  background-color: #1a5c3a;
+  color: #7effc0;
+  border-color: #2a8c5a;
+  font-size: 1.2rem;
+}
+
+.equals:hover {
+  background-color: #2a7c4a;
+}
+
+.clear {
+  background-color: #5c1a1a;
+  color: #ff9090;
+  border-color: #8c2a2a;
+}
+
+.clear:hover {
+  background-color: #7c2a2a;
+}
+
+.memory {
+  background-color: #3a2a1a;
+  color: #f0c040;
+  border-color: #6a4a2a;
+  font-size: 0.8rem;
+}
+
+.memory:hover {
+  background-color: #4a3a2a;
+}
+
+.constant {
+  background-color: #2a1a4a;
+  color: #c0a0ff;
+  border-color: #4a2a8a;
+}
+
+.constant:hover {
+  background-color: #3a2a5a;
+}

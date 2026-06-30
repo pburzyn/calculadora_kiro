@@ -1,0 +1,75 @@
+.panel {
+  background-color: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #7ec8e3;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 10px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.empty {
+  color: #555;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #22223a;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  transition: background-color 0.1s;
+  flex-wrap: wrap;
+}
+
+.entry:hover {
+  background-color: #2e2e50;
+}
+
+.expression {
+  color: #aaa;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.equals {
+  color: #555;
+  flex-shrink: 0;
+}
+
+.result {
+  color: #e8e8e8;
+  font-weight: bold;
+  flex-shrink: 0;
+}
