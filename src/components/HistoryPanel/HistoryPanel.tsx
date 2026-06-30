@@ -20,11 +20,12 @@ export function HistoryPanel({ history, onLoad }: HistoryPanelProps) {
               className={styles.entry}
               onClick={() => onLoad(entry)}
               role="listitem"
+              data-testid="history-entry"
               title="Click para cargar esta expresión"
             >
-              <span className={styles.expression}>{entry.expression}</span>
+              <span className={styles.expression} data-testid="history-expression">{entry.expression}</span>
               <span className={styles.equals}>=</span>
-              <span className={styles.result}>{entry.result}</span>
+              <span className={styles.result} data-testid="history-result">{entry.result}</span>
             </li>
           ))}
         </ul>
