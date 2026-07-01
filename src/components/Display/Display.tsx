@@ -33,20 +33,20 @@ export function Display({
         >
           {angleMode.toUpperCase()}
         </button>
-        {memoryActive && <span className={styles.memoryIndicator}>M</span>}
+        {memoryActive && <span className={styles.memoryIndicator} data-testid="memory-indicator">M</span>}
       </div>
 
       <div className={styles.expressionRow}>
-        <span className={styles.expression} aria-label="expresión">
+        <span className={styles.expression} aria-label="expresión" data-testid="expression">
           {expression || '\u00A0'}
         </span>
       </div>
 
       <div className={styles.resultRow}>
         {error ? (
-          <span className={styles.error} role="alert">{error}</span>
+          <span className={styles.error} role="alert" data-testid="error">{error}</span>
         ) : (
-          <span className={styles.result}>{result ?? '\u00A0'}</span>
+          <span className={styles.result} data-testid="result">{result ?? '\u00A0'}</span>
         )}
         {canToggleDisplay && (
           <button
