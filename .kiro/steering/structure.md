@@ -1,6 +1,6 @@
 # Project Structure
 
-## Layout
+## Layout actual
 
 ```
 FirstProject/
@@ -8,33 +8,46 @@ FirstProject/
 │   ├── steering/
 │   │   ├── product.md          # Propósito, alcance y criterio de éxito
 │   │   ├── tech.md             # Stack, comandos y convenciones técnicas
-│   │   └── structure.md        # Este archivo
+│   │   ├── structure.md        # Este archivo
+│   │   └── git-workflow.md     # Estrategia de ramas y PRs
 │   └── specs/
 │       └── calculadora-cientifica/
 │           ├── requirements.md # Requerimientos funcionales y no funcionales
 │           ├── design.md       # Arquitectura, componentes y decisiones de diseño
 │           └── tasks.md        # Plan de implementación con TDD
+├── docs/
+│   └── adr/
+│       └── ADR-001-arquitectura.md
+├── e2e/                        # Tests E2E con Playwright
+│   └── calculator.spec.ts
 ├── src/
 │   ├── engine/                 # Motor de cálculo (encapsula math.js)
-│   │   ├── evaluator.ts        # Evalúa expresiones string → resultado
-│   │   ├── formatter.ts        # Formatea resultados (decimal ↔ fracción, notación científica)
+│   │   ├── evaluator.ts        # Evalúa expresiones string → número
+│   │   ├── evaluator.test.ts
+│   │   ├── formatter.ts        # Formatea resultados (decimal ↔ fracción)
+│   │   ├── formatter.test.ts
 │   │   ├── memory.ts           # Lógica de memoria (M+, M-, MR, MC)
+│   │   ├── memory.test.ts
 │   │   ├── history.ts          # Lógica del historial de sesión
-│   │   └── errors.ts           # Mensajes de error en español
+│   │   ├── history.test.ts
+│   │   ├── errors.ts           # Errores tipados con mensajes en español
+│   │   └── errors.test.ts
 │   ├── components/
-│   │   ├── Display/            # Pantalla de expresión y resultado
-│   │   ├── Keypad/             # Grilla de botones
-│   │   ├── History/            # Panel de historial
-│   │   └── MemoryIndicator/    # Indicador de valor en memoria
+│   │   ├── Display/            # Pantalla: expresión, resultado, indicadores
+│   │   ├── Keypad/             # Grilla de 40 botones
+│   │   └── HistoryPanel/       # Panel de historial (últimas 10 ops)
 │   ├── hooks/
-│   │   └── useCalculator.ts    # Estado global de la calculadora
-│   ├── App.tsx
-│   └── main.tsx
-├── e2e/                        # Tests E2E con Playwright
+│   │   ├── useCalculator.ts    # Estado global de la calculadora
+│   │   └── useCalculator.test.ts
+│   ├── App.tsx                 # Composición + listener de teclado
+│   ├── App.module.css
+│   ├── main.tsx
+│   └── test-setup.ts
 ├── public/
 ├── index.html
-├── vite.config.ts
-├── tsconfig.json
+├── vite.config.ts              # Vitest + cobertura configurados aquí
+├── playwright.config.ts
+├── tsconfig.app.json
 └── package.json
 ```
 
@@ -42,5 +55,6 @@ FirstProject/
 
 - La lógica de negocio **nunca** vive dentro de los componentes React. Todo va en `src/engine/` o `src/hooks/`.
 - Cada módulo en `src/engine/` tiene su archivo de test hermano (`*.test.ts`).
-- Los componentes son puramente presentacionales cuando es posible.
+- Los componentes son puramente presentacionales — reciben props y llaman callbacks.
+- Los selectores E2E usan `data-testid`, nunca clases CSS con hashes (CSS Modules genera nombres dinámicos).
 - Actualizar los archivos de steering cuando cambie el stack, la estructura o las convenciones.
