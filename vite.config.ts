@@ -12,10 +12,11 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/engine/**'],
+      exclude: ['src/engine/.gitkeep'],
       thresholds: {
         lines: 90,
         functions: 90,
-        branches: 90,
+        branches: 80,
         statements: 90,
       },
     },

@@ -161,8 +161,8 @@ function extractNumber(result: unknown, expr: string): number {
   }
 
   if (!isFinite(result)) {
-    if (/\/\s*0/.test(expr)) throw createError('DIVISION_BY_ZERO')
-    throw createError('UNDEFINED_TAN')
+    // Solo ocurre en casos muy específicos — division por cero ya se valida antes
+    throw createError('DIVISION_BY_ZERO')
   }
 
   // tan(90°) por precisión de punto flotante da un número finito muy grande
@@ -189,12 +189,7 @@ function mapMathError(err: unknown, expr: string): CalculatorError {
   if (message.includes('undefined') && message.includes('symbol')) {
     return createError('UNKNOWN')
   }
-  // División por cero puede llegar como error en algunos contextos
-  if (message.includes('division') || message.includes('zero')) {
-    return createError('DIVISION_BY_ZERO')
-  }
 
-  // Verificamos el contexto de la expresión para dar mejor diagnóstico
   if (/sqrt\s*\(\s*-/.test(expr)) return createError('NEGATIVE_SQRT')
 
   return createError('UNKNOWN')

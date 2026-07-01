@@ -192,3 +192,41 @@ describe('evaluate — valores especiales', () => {
     expect(val('42')).toBe(42)
   })
 })
+
+// ─── Cobertura de ramas de mapMathError ─────────────────────────────────────
+
+describe('evaluate — cobertura de ramas de error adicionales', () => {
+  it('símbolo indefinido lanza UNKNOWN', () => {
+    expectError('xyz', 'UNKNOWN')
+  })
+
+  it('expresión con solo operadores lanza error', () => {
+    expect(() => evaluate('+++', 'deg')).toThrow(CalculatorError)
+  })
+
+  it('string no numérico lanza UNKNOWN', () => {
+    expect(() => evaluate('abc(', 'deg')).toThrow(CalculatorError)
+  })
+
+  it('expresión con paréntesis extra cierre lanza UNBALANCED_PARENTHESES', () => {
+    expectError('3 + 5)', 'UNBALANCED_PARENTHESES')
+  })
+
+  it('sqrt(-4) lanza NEGATIVE_SQRT', () => {
+    expectError('sqrt(-4)', 'NEGATIVE_SQRT')
+  })
+})
+
+  it('tan(90) en grados lanza UNDEFINED_TAN (via threshold de valor grande)', () => {
+    // tan(90°) da ~1.6e16 en math.js — se detecta por threshold
+    expectError('tan(90)', 'UNDEFINED_TAN')
+  })
+
+  it('expresión con función desconocida pasa por mapMathError', () => {
+    // math.js lanza error con "undefined symbol" para funciones inexistentes
+    expect(() => evaluate('foo(3)', 'deg')).toThrow(CalculatorError)
+  })
+
+  it('expresión que math.js no puede parsear pasa por mapMathError', () => {
+    expect(() => evaluate('3 ** 2', 'deg')).toThrow(CalculatorError)
+  })
